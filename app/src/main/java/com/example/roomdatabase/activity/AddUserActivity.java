@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.roomdatabase.R;
 import com.example.roomdatabase.room.Mahasiswa;
 
+import butterknife.ButterKnife;
+
 import static com.example.roomdatabase.AppApplication.db;
 
 public class AddUserActivity extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText etKejuruan;
     private EditText etNama;
     private EditText etNim;
-
+    private Unbinder unbinder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,8 @@ public class AddUserActivity extends AppCompatActivity {
         etKejuruan = findViewById(R.id.etKejuruan);
         etNim = findViewById(R.id.etNim);
         etNama = findViewById(R.id.etNama);
+
+        unbinder = (Unbinder) ButterKnife.bind(this);
 
         insertData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,4 +59,10 @@ public class AddUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    private class Unbinder {
+    }
+
+
+
 }

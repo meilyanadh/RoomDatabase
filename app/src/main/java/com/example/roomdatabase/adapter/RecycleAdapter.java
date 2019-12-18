@@ -58,6 +58,24 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
             tvKejuruan = itemView.findViewById(R.id.tvKejuruan);
             tvNim = itemView.findViewById(R.id.tvNim);
             tvNama = itemView.findViewById(R.id.tvNama);
+
+
+            ButterKnife.bind(this, itemView);
+
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mAdapterCallback.onDelete(getAdapterPosition());
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mAdapterCallback.onLongClick(getAdapterPosition());
+                    return true;
+                }
+            });
         }
     }
 
